@@ -1,4 +1,4 @@
-Cree las tablas segun la referencia
+ Cree las tablas segun la referencia
 CREATE TABLE PRODUCTO_EJERCICIO
 (COD VARCHAR (5)PRIMARY KEY,
 DESCRIPCION VARCHAR (100),
@@ -34,5 +34,16 @@ v_DESCRIPCION PRODUCTO_EJERCICIO.DESCRIPCION%type := 'Sabor de Verano-Uva-1 Litr
 v_CATEGORIA PRODUCTO_EJERCICIO.CATEGORIA%type := 'Zumo de Frutas';
 BEGIN
 INSERT INTO PRODUCTO_EJERCICIO VALUES(v_COD, v_DESCRIPCION, v_CATEGORIA);
+COMMIT;
+END;
+
+
+Modifique el script para que cuando el usuario incluya un guion como separacion, este sea cambiado por '>'.
+DECLARE
+v_COD PRODUCTO_EJERCICIO.COD%type := '32223';
+v_DESCRIPCION PRODUCTO_EJERCICIO.DESCRIPCION%type := 'Sabor de Verano-Uva-1 Litro';
+v_CATEGORIA PRODUCTO_EJERCICIO.CATEGORIA%type := 'Zumo de Frutas';
+BEGIN
+INSERT INTO PRODUCTO_EJERCICIO VALUES(v_COD, REPLACE (v_DESCRIPCION, '-','>'), v_CATEGORIA);
 COMMIT;
 END;
